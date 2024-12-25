@@ -135,12 +135,12 @@ func _ready():
 func _process(delta):
 	var hold = origin.get_parent().position.y
 	
-	origin.get_parent().position.y += yVel * 0.0166
+	origin.get_parent().position.y += yVel * delta
 	if origin.get_parent().position.y > 0:
 		origin.get_parent().position.y = 0
 	bounceChange = hold - origin.get_parent().position.y
 	
-	yVel += bounceGravity*0.0166
+	yVel += bounceGravity*delta
 	
 	if Input.is_action_just_pressed("openFolder"):
 		OS.shell_open(ProjectSettings.globalize_path("user://"))
